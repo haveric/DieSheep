@@ -16,14 +16,13 @@ public class DieSheep extends JavaPlugin{
 		pm.registerEvents(sheepInteract, this);
 		
 		Config.init(this);
-        
-        getCommand(Commands.getMain()).setExecutor(commands);
-        	
-		log.info(String.format("[%s] v%s Started",getDescription().getName(), getDescription().getVersion()));
+
+		getCommand(Commands.getMain()).setExecutor(commands);
+
 	}
 
 	@Override
 	public void onDisable() {
-		log.info(String.format("[%s] Disabled",getDescription().getName()));
+
 	}
 }
