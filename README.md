@@ -4,7 +4,7 @@ DieSheep
 #### Changelog:
 
 #### Version 1.1
-* Removed Metrics as the service has been discontinued.
+* Updated Metrics to R7
 
 #### Version 1.0
 * Initial version
