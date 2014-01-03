@@ -78,4 +78,18 @@ public class Config {
     public static float getExplosionDamage() {
         return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
     }
+
+    public static String getWorlds() {
+        String worldString = "";
+
+        int worldLength = worlds.size();
+        for (int i = 0; i < worldLength; i++) {
+            worldString += worlds.get(i);
+            if (i < worldLength - 1) {
+                worldString += " ";
+            }
+        }
+
+        return worldString;
+    }
 }

@@ -19,12 +19,23 @@ public class Commands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         ChatColor msgColor = ChatColor.DARK_AQUA;
+        ChatColor highlightColor = ChatColor.YELLOW;
+        ChatColor noneColor = ChatColor.RED;
 
         String title = msgColor + "[" + ChatColor.GRAY + plugin.getDescription().getName() + msgColor + "] ";
 
         if (commandLabel.equalsIgnoreCase(cmdMain)) {
             if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase(cmdHelp))) {
                 sender.sendMessage(title + "github.com/haveric/DieSheep - v" + plugin.getDescription().getVersion());
+
+                String worldString = Config.getWorlds();
+                if (worldString.equals("")) {
+                    worldString = noneColor + "none";
+                } else {
+                    worldString = highlightColor + worldString;
+                }
+                sender.sendMessage("Allowed worlds: " + worldString);
+                sender.sendMessage("Explosion Damage: " + highlightColor + Config.getExplosionDamage());
             }
         }
         return false;
