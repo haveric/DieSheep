@@ -14,7 +14,9 @@ public class Config {
     private static ArrayList<String> worlds;
     private static String cfgAllowedWorlds = "AllowedWorlds";
     private static String cfgExplosionDamage = "ExplosionDamage";
+    private static String cfgDropWool = "DropWool";
 
+    private static final boolean DROP_WOOL_DEFAULT = true;
     private static final double DEFAULT_EXPLOSION_DAMAGE = 1.2;
 
     private static FileConfiguration config;
@@ -50,6 +52,12 @@ public class Config {
         double dmg = config.getDouble(cfgExplosionDamage, -1);
         if (dmg == -1) {
             config.set(cfgExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+        }
+
+        config.addDefault(cfgDropWool, DROP_WOOL_DEFAULT);
+
+        if (!config.isSet(cfgDropWool)) {
+            config.options().copyDefaults(true);
         }
         saveConfig();
     }
@@ -106,8 +114,18 @@ public class Config {
             saveConfig();
         }
     }
+
     public static float getExplosionDamage() {
         return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+    }
+
+    public static void setDropWool(boolean canDrop) {
+        config.set(cfgDropWool, canDrop);
+        saveConfig();
+    }
+
+    public static boolean getDropWool() {
+        return config.getBoolean(cfgDropWool);
     }
 
     public static String getWorlds() {

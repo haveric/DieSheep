@@ -14,6 +14,7 @@ public class Commands implements CommandExecutor {
     static String cmdAddWorld = "add";
     static String cmdRemoveWorld = "remove";
     static String cmdExplosion = "explosion";
+    static String cmdDrop = "drop";
 
     public Commands(DieSheep wd) {
         plugin = wd;
@@ -41,9 +42,17 @@ public class Commands implements CommandExecutor {
                 sender.sendMessage("Allowed worlds: " + worldString);
                 sender.sendMessage("Explosion Damage: " + highlightColor + Config.getExplosionDamage());
 
+                if (Config.getDropWool()) {
+                    sender.sendMessage("Sheep Drop Wool: " + highlightColor + Config.getDropWool());
+                } else {
+                    sender.sendMessage("Sheep Drop Wool: " + errorColor + Config.getDropWool());
+                }
+
+
                 sender.sendMessage("/" + cmdMain + " " + cmdAddWorld + " [world] - " + msgColor + "Enables DieSheep on world");
                 sender.sendMessage("/" + cmdMain + " " + cmdRemoveWorld + " [world] - " + msgColor + "Disables DieSheep on world");
                 sender.sendMessage("/" + cmdMain + " " + cmdExplosion + " amount - " + msgColor + "Sets the explosion damage");
+                sender.sendMessage("/" + cmdMain + " " + cmdDrop + " true/false - " + msgColor + "Sets whether sheep drop wool or not");
             } else if (args.length == 2) {
                 if (args[0].equalsIgnoreCase(cmdAddWorld)) {
                     String world = args[1];
@@ -67,6 +76,16 @@ public class Commands implements CommandExecutor {
                     double damage = Double.parseDouble(args[1]);
                     Config.setExplosionDamage(damage);
                     sender.sendMessage("Explosion damage set to: " + highlightColor + "damage");
+                } else if (args[0].equalsIgnoreCase(cmdDrop)) {
+                    if (args[1].equalsIgnoreCase("true")) {
+                        Config.setDropWool(true);
+                        sender.sendMessage("Wool Drops have been " + highlightColor + "enabled");
+                    } else if (args[1].equalsIgnoreCase("false")) {
+                        Config.setDropWool(false);
+                        sender.sendMessage("Wool Drops have been " + errorColor + "disabled");
+                    } else {
+                        sender.sendMessage(errorColor + "Invalid value. Wool drops can only be set to true or false.");
+                    }
                 }
             }
         }
