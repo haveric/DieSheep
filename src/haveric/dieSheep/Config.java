@@ -75,6 +75,37 @@ public class Config {
         return enabled;
     }
 
+    public static boolean addWorld(String world) {
+        boolean successful = false;
+
+        if (!worlds.contains(world)) {
+            worlds.add(world);
+            config.set(cfgAllowedWorlds, worlds);
+            saveConfig();
+            successful = true;
+        }
+
+        return successful;
+    }
+
+    public static boolean removeWorld(String world) {
+        boolean successful = false;
+
+        if (worlds.contains(world)) {
+            worlds.remove(world);
+            config.set(cfgAllowedWorlds, worlds);
+            saveConfig();
+            successful = true;
+        }
+        return successful;
+    }
+
+    public static void setExplosionDamage(double newDamage) {
+        if (newDamage >= 0) {
+            config.set(cfgExplosionDamage, newDamage);
+            saveConfig();
+        }
+    }
     public static float getExplosionDamage() {
         return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
     }
