@@ -49,10 +49,10 @@ public class Commands implements CommandExecutor {
                 }
 
 
-                sender.sendMessage("/" + cmdMain + " " + cmdAddWorld + " [world] - " + msgColor + "Enables DieSheep on world");
-                sender.sendMessage("/" + cmdMain + " " + cmdRemoveWorld + " [world] - " + msgColor + "Disables DieSheep on world");
-                sender.sendMessage("/" + cmdMain + " " + cmdExplosion + " amount - " + msgColor + "Sets the explosion damage");
-                sender.sendMessage("/" + cmdMain + " " + cmdDrop + " true/false - " + msgColor + "Sets whether sheep drop wool or not");
+                sender.sendMessage("/" + cmdMain + " " + cmdAddWorld + highlightColor + " world " + defaultColor + "- " + msgColor + "Enables DieSheep on world");
+                sender.sendMessage("/" + cmdMain + " " + cmdRemoveWorld + highlightColor + " world " + defaultColor + "- " + msgColor + "Disables DieSheep on world");
+                sender.sendMessage("/" + cmdMain + " " + cmdExplosion + highlightColor + " amount " + defaultColor + "- " + msgColor + "Sets the explosion damage");
+                sender.sendMessage("/" + cmdMain + " " + cmdDrop + highlightColor + " true" + defaultColor + "/" + highlightColor + "false " + defaultColor + "- " + msgColor + "Sets whether sheep drop wool");
             } else if (args.length == 2) {
                 if (args[0].equalsIgnoreCase(cmdAddWorld)) {
                     String world = args[1];
