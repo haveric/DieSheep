@@ -29,7 +29,7 @@ public class Config {
      */
     public static void init(DieSheep ds) {
         plugin = ds;
-        configFile = new File(plugin.getDataFolder() + "/config.yml");
+        configFile = new File(plugin.getDataFolder() + File.separator + "config.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
         setup();
     }
