@@ -6,6 +6,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
@@ -34,11 +35,13 @@ public class SheepInteract implements Listener {
                     event.setCancelled(true);
                     sheep.setSheared(true);
                 }
-                Location loc = sheep.getLocation();
 
-                Wolf wolf = loc.getWorld().spawn(loc, Wolf.class);
-                wolf.setAngry(true);
-                wolf.damage(0, event.getPlayer());
+                String shearType = Config.getShearType();
+                if (shearType.equals(Config.TYPE_WOLF)) {
+                    spawnWolf(sheep.getLocation(), event.getPlayer());
+                } else if (shearType.equals(Config.TYPE_EXPLOSION)) {
+                    spawnExplosion(sheep, Config.getShearExplosionDamage());
+                }
             }
         }
     }
@@ -70,8 +73,11 @@ public class SheepInteract implements Listener {
                         }
                     }
                 }
-                sheep.getWorld().createExplosion(sheep.getLocation(), Config.getExplosionDamage());
-                sheep.setFallDistance(100);
+
+                String dieType = Config.getDieType();
+                if (dieType == Config.TYPE_EXPLOSION) {
+                    spawnExplosion(sheep, Config.getDieExplosionDamage());
+                }
             }
         }
     }
@@ -84,9 +90,22 @@ public class SheepInteract implements Listener {
             if (Config.isEnabled(sheep.getWorld().getName())) {
                 event.setCancelled(true);
                 sheep.setColor(DyeColor.WHITE);
-                sheep.getWorld().createExplosion(event.getEntity().getLocation(), Config.getExplosionDamage());
-                sheep.setFallDistance(100);
+
+                String dyeType = Config.getDyeType();
+                if (dyeType.equals(Config.TYPE_EXPLOSION)) {
+                    spawnExplosion(sheep, Config.getDyeExplosionDamage());
+                }
             }
         }
+    }
+
+    public void spawnWolf(Location loc, Player player) {
+        Wolf wolf = loc.getWorld().spawn(loc, Wolf.class);
+        wolf.setAngry(true);
+        wolf.damage(0, player);
+    }
+
+    public void spawnExplosion(Sheep sheep, double amount) {
+        sheep.getWorld().createExplosion(sheep.getLocation(), (float) amount);
     }
 }
