@@ -131,18 +131,6 @@ public class Config {
         return successful;
     }
 
-    @Deprecated
-    public static void setExplosionDamage(double newDamage) {
-        if (newDamage >= 0) {
-            config.set(cfgExplosionDamage, newDamage);
-            saveConfig();
-        }
-    }
-    @Deprecated
-    public static float getExplosionDamage() {
-        return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_POWER);
-    }
-
     public static void setDropWool(boolean canDrop) {
         config.set(cfgDropWool, canDrop);
         saveConfig();
