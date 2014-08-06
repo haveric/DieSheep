@@ -19,9 +19,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class SheepInteract implements Listener {
 
-    DieSheep plugin;
-    public SheepInteract(DieSheep dieSheep) {
-        plugin = dieSheep;
+    public SheepInteract() {
+
     }
 
     @EventHandler

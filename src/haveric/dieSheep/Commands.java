@@ -7,16 +7,16 @@ import org.bukkit.command.CommandSender;
 
 public class Commands implements CommandExecutor {
 
-    DieSheep plugin;
+    private DieSheep plugin;
 
-    static String cmdMain = "diesheep";
-    static String cmdHelp = "help";
-    static String cmdAddWorld = "add";
-    static String cmdRemoveWorld = "remove";
-    static String cmdShearExplosion = "shear";
-    static String cmdDieExplosion = "die";
-    static String cmdDyeExplosion = "dye";
-    static String cmdDrop = "drop";
+    private static String cmdMain = "diesheep";
+    private static String cmdHelp = "help";
+    private static String cmdAddWorld = "add";
+    private static String cmdRemoveWorld = "remove";
+    private static String cmdShearExplosion = "shear";
+    private static String cmdDieExplosion = "die";
+    private static String cmdDyeExplosion = "dye";
+    private static String cmdDrop = "drop";
 
     public Commands(DieSheep wd) {
         plugin = wd;

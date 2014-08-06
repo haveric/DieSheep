@@ -19,7 +19,7 @@ public class DieSheep extends JavaPlugin {
     public void onEnable() {
         log = getLogger();
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new SheepInteract(this), this);
+        pm.registerEvents(new SheepInteract(), this);
 
         Config.init(this);
 
