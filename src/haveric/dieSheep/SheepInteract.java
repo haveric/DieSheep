@@ -40,7 +40,7 @@ public class SheepInteract implements Listener {
                 if (shearType.equals(Config.TYPE_WOLF)) {
                     spawnWolf(sheep.getLocation(), event.getPlayer());
                 } else if (shearType.equals(Config.TYPE_EXPLOSION)) {
-                    spawnExplosion(sheep, Config.getShearExplosionDamage());
+                    spawnExplosion(sheep, Config.getShearExplosionPower());
                 }
             }
         }
@@ -76,7 +76,7 @@ public class SheepInteract implements Listener {
 
                 String dieType = Config.getDieType();
                 if (dieType == Config.TYPE_EXPLOSION) {
-                    spawnExplosion(sheep, Config.getDieExplosionDamage());
+                    spawnExplosion(sheep, Config.getDieExplosionPower());
                 }
             }
         }
@@ -93,7 +93,7 @@ public class SheepInteract implements Listener {
 
                 String dyeType = Config.getDyeType();
                 if (dyeType.equals(Config.TYPE_EXPLOSION)) {
-                    spawnExplosion(sheep, Config.getDyeExplosionDamage());
+                    spawnExplosion(sheep, Config.getDyeExplosionPower());
                 }
             }
         }

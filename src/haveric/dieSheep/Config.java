@@ -13,19 +13,20 @@ public class Config {
 
     private static ArrayList<String> worlds;
     private static String cfgAllowedWorlds = "AllowedWorlds";
-    @Deprecated
+
+    // Old explosion type used to convert older plugin versions
     private static String cfgExplosionDamage = "ExplosionDamage";
     private static String cfgDropWool = "DropWool";
 
     private static String cfgShearType = "ShearType";
-    private static String cfgShearExplosionDamage = "ShearExplosionDamage";
+    private static String cfgShearExplosionPower = "ShearExplosionPower";
     private static String cfgDieType = "DieType";
-    private static String cfgDieExplosionDamage = "DieExplosionDamage";
+    private static String cfgDieExplosionPower = "DieExplosionPower";
     private static String cfgDyeType = "DyeType";
-    private static String cfgDyeExplosionDamage = "DyeExplosionDamage";
+    private static String cfgDyeExplosionPower = "DyeExplosionPower";
 
     private static final boolean DROP_WOOL_DEFAULT = true;
-    private static final double DEFAULT_EXPLOSION_DAMAGE = 1.2;
+    private static final double DEFAULT_EXPLOSION_POWER = 1.2;
     public static final String TYPE_WOLF = "wolf";
     public static final String TYPE_NONE = "none";
     public static final String TYPE_EXPLOSION = "explosion";
@@ -64,21 +65,21 @@ public class Config {
         // Handle old versions of the plugin by moving the explosion damage.
         double dmg = config.getDouble(cfgExplosionDamage, -1);
         if (dmg != -1) {
-            config.set(cfgDieExplosionDamage, dmg);
-            config.set(cfgDyeExplosionDamage, dmg);
+            config.set(cfgDieExplosionPower, dmg);
+            config.set(cfgDyeExplosionPower, dmg);
             config.set(cfgExplosionDamage, null);
         }
 
         config.addDefault(cfgDropWool, DROP_WOOL_DEFAULT);
         config.addDefault(cfgShearType, TYPE_WOLF);
-        config.addDefault(cfgShearExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+        config.addDefault(cfgShearExplosionPower, DEFAULT_EXPLOSION_POWER);
         config.addDefault(cfgDieType, TYPE_EXPLOSION);
-        config.addDefault(cfgDieExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+        config.addDefault(cfgDieExplosionPower, DEFAULT_EXPLOSION_POWER);
         config.addDefault(cfgDyeType, TYPE_EXPLOSION);
-        config.addDefault(cfgDyeExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+        config.addDefault(cfgDyeExplosionPower, DEFAULT_EXPLOSION_POWER);
 
-        if (!config.isSet(cfgDropWool) || !config.isSet(cfgShearType) || !config.isSet(cfgShearExplosionDamage)
-         || !config.isSet(cfgDieType) || !config.isSet(cfgDieExplosionDamage) || !config.isSet(cfgDyeType) || !config.isSet(cfgDyeExplosionDamage)) {
+        if (!config.isSet(cfgDropWool) || !config.isSet(cfgShearType) || !config.isSet(cfgShearExplosionPower)
+         || !config.isSet(cfgDieType) || !config.isSet(cfgDieExplosionPower) || !config.isSet(cfgDyeType) || !config.isSet(cfgDyeExplosionPower)) {
             config.options().copyDefaults(true);
         }
         saveConfig();
@@ -139,7 +140,7 @@ public class Config {
     }
     @Deprecated
     public static float getExplosionDamage() {
-        return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+        return (float) config.getDouble(cfgExplosionDamage, DEFAULT_EXPLOSION_POWER);
     }
 
     public static void setDropWool(boolean canDrop) {
@@ -176,15 +177,15 @@ public class Config {
         return config.getString(cfgShearType);
     }
 
-    public static void setShearExplosionDamage(double newDamage) {
-        if (newDamage >= 0) {
-            config.set(cfgShearExplosionDamage, newDamage);
+    public static void setShearExplosionPower(double newPower) {
+        if (newPower >= 0) {
+            config.set(cfgShearExplosionPower, newPower);
             saveConfig();
         }
     }
 
-    public static double getShearExplosionDamage() {
-        return config.getDouble(cfgShearExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+    public static double getShearExplosionPower() {
+        return config.getDouble(cfgShearExplosionPower, DEFAULT_EXPLOSION_POWER);
     }
 
     public static void setDieType(String type) {
@@ -198,15 +199,15 @@ public class Config {
         return config.getString(cfgDieType);
     }
 
-    public static void setDieExplosionDamage(double newDamage) {
-        if (newDamage >= 0) {
-            config.set(cfgDieExplosionDamage, newDamage);
+    public static void setDieExplosionPower(double newPower) {
+        if (newPower >= 0) {
+            config.set(cfgDieExplosionPower, newPower);
             saveConfig();
         }
     }
 
-    public static double getDieExplosionDamage() {
-        return config.getDouble(cfgDieExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+    public static double getDieExplosionPower() {
+        return config.getDouble(cfgDieExplosionPower, DEFAULT_EXPLOSION_POWER);
     }
 
     public static void setDyeType(String type) {
@@ -220,14 +221,14 @@ public class Config {
         return config.getString(cfgDyeType);
     }
 
-    public static void setDyeExplosionDamage(double newDamage) {
-        if (newDamage >= 0) {
-            config.set(cfgDyeExplosionDamage, newDamage);
+    public static void setDyeExplosionPower(double newPower) {
+        if (newPower >= 0) {
+            config.set(cfgDyeExplosionPower, newPower);
             saveConfig();
         }
     }
 
-    public static double getDyeExplosionDamage() {
-        return config.getDouble(cfgDyeExplosionDamage, DEFAULT_EXPLOSION_DAMAGE);
+    public static double getDyeExplosionPower() {
+        return config.getDouble(cfgDyeExplosionPower, DEFAULT_EXPLOSION_POWER);
     }
 }

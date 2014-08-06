@@ -13,7 +13,9 @@ public class Commands implements CommandExecutor {
     static String cmdHelp = "help";
     static String cmdAddWorld = "add";
     static String cmdRemoveWorld = "remove";
-    static String cmdExplosion = "explosion";
+    static String cmdShearExplosion = "shear";
+    static String cmdDieExplosion = "die";
+    static String cmdDyeExplosion = "dye";
     static String cmdDrop = "drop";
 
     public Commands(DieSheep wd) {
@@ -24,7 +26,7 @@ public class Commands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         ChatColor defaultColor = ChatColor.WHITE;
         ChatColor msgColor = ChatColor.DARK_AQUA;
-        ChatColor highlightColor = ChatColor.YELLOW;
+        ChatColor highlightColor = ChatColor.GOLD;
         ChatColor errorColor = ChatColor.RED;
 
         String title = msgColor + "[" + ChatColor.GRAY + plugin.getDescription().getName() + msgColor + "] ";
@@ -40,19 +42,25 @@ public class Commands implements CommandExecutor {
                     worldString = highlightColor + worldString;
                 }
                 sender.sendMessage("Allowed worlds: " + worldString);
-                sender.sendMessage("Explosion Damage: " + highlightColor + Config.getExplosionDamage());
 
+                String dropTrueFalse;
                 if (Config.getDropWool()) {
-                    sender.sendMessage("Sheep Drop Wool: " + highlightColor + Config.getDropWool());
+                    dropTrueFalse = " <" + highlightColor + "true" + defaultColor + ",false>";
                 } else {
-                    sender.sendMessage("Sheep Drop Wool: " + errorColor + Config.getDropWool());
+                    dropTrueFalse =  " <true," + highlightColor + "false" + defaultColor + ">";
                 }
 
+                double shearExplosionPower = Math.round(Config.getShearExplosionPower() * 100) / 100;
+                double dieExplosionPower = Math.round(Config.getDieExplosionPower() * 100) / 100;
+                double dyeExplosionPower = Math.round(Config.getDyeExplosionPower() * 100) / 100;
 
-                sender.sendMessage("/" + cmdMain + " " + cmdAddWorld + highlightColor + " world " + defaultColor + "- " + msgColor + "Enables DieSheep on world");
-                sender.sendMessage("/" + cmdMain + " " + cmdRemoveWorld + highlightColor + " world " + defaultColor + "- " + msgColor + "Disables DieSheep on world");
-                sender.sendMessage("/" + cmdMain + " " + cmdExplosion + highlightColor + " amount " + defaultColor + "- " + msgColor + "Sets the explosion damage");
-                sender.sendMessage("/" + cmdMain + " " + cmdDrop + highlightColor + " true" + defaultColor + "/" + highlightColor + "false " + defaultColor + "- " + msgColor + "Sets whether sheep drop wool");
+
+                sender.sendMessage("/" + cmdMain + " " + cmdAddWorld +  " <world> - " + msgColor + "Enables DieSheep on world");
+                sender.sendMessage("/" + cmdMain + " " + cmdRemoveWorld + " <world> - " + msgColor + "Disables DieSheep on world");
+                sender.sendMessage("/" + cmdMain + " " + cmdShearExplosion + " <amount> " + highlightColor + shearExplosionPower +  defaultColor + " - " + msgColor + "Sets shear explosion power");
+                sender.sendMessage("/" + cmdMain + " " + cmdDieExplosion + " <amount> " + highlightColor + dieExplosionPower + defaultColor + " - " + msgColor + "Sets die explosion power");
+                sender.sendMessage("/" + cmdMain + " " + cmdDyeExplosion + " <amount> " + highlightColor + dyeExplosionPower + defaultColor + " - " + msgColor + "Sets dye explosion power");
+                sender.sendMessage("/" + cmdMain + " " + cmdDrop + dropTrueFalse + " - " + msgColor + "Sets whether sheep drop wool");
             } else if (args.length == 2) {
                 if (args[0].equalsIgnoreCase(cmdAddWorld)) {
                     String world = args[1];
@@ -72,10 +80,18 @@ public class Commands implements CommandExecutor {
                     } else {
                         sender.sendMessage(errorColor + "World " + highlightColor + world + errorColor + " cannot be removed.");
                     }
-                } else if (args[0].equalsIgnoreCase(cmdExplosion)) {
-                    double damage = Double.parseDouble(args[1]);
-                    Config.setExplosionDamage(damage);
-                    sender.sendMessage("Explosion damage set to: " + highlightColor + "damage");
+                } else if (args[0].equalsIgnoreCase(cmdShearExplosion)) {
+                    double power = Double.parseDouble(args[1]);
+                    Config.setShearExplosionPower(power);
+                    sender.sendMessage("Shear Explosion power set to: " + highlightColor + "power");
+                } else if (args[0].equalsIgnoreCase(cmdDieExplosion)) {
+                    double power = Double.parseDouble(args[1]);
+                    Config.setDieExplosionPower(power);
+                    sender.sendMessage("Die Explosion power set to: " + highlightColor + "power");
+                } else if (args[0].equalsIgnoreCase(cmdDyeExplosion)) {
+                    double power = Double.parseDouble(args[1]);
+                    Config.setDyeExplosionPower(power);
+                    sender.sendMessage("Dye Explosion power set to: " + highlightColor + "power");
                 } else if (args[0].equalsIgnoreCase(cmdDrop)) {
                     if (args[1].equalsIgnoreCase("true")) {
                         Config.setDropWool(true);

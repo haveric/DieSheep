@@ -6,6 +6,7 @@ DieSheep
 #### Coming soon:
 * Updated Metrics to work with updated getOnlinePlayers
 * Added config options for disabling wolves and settings explosions per event.
+* Improved commands
 
 #### Version 1.1 (1/3/2014)
 * Updated Metrics to R7
