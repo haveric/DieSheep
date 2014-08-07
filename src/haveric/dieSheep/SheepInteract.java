@@ -74,7 +74,7 @@ public class SheepInteract implements Listener {
                 }
 
                 String dieType = Config.getDieType();
-                if (dieType == Config.TYPE_EXPLOSION) {
+                if (dieType.equals(Config.TYPE_EXPLOSION)) {
                     spawnExplosion(sheep, Config.getDieExplosionPower());
                 }
             }
