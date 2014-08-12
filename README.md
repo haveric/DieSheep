@@ -3,7 +3,7 @@ DieSheep
 
 #### Changelog:
 
-#### Coming soon:
+#### Version 1.2 (8/11/2014)
 * Updated Metrics to work with updated getOnlinePlayers
 * Added config options for disabling wolves and settings explosions per event.
 * Improved commands
