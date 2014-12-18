@@ -2,6 +2,7 @@ name: DieSheep
 main: haveric.dieSheep.DieSheep
 version: 1.2
 author: haveric
+website: http://dev.bukkit.org/server-mods/diesheep/
 dev-url: http://dev.bukkit.org/server-mods/diesheep/
 softdepend: [Vault]
 description: >
