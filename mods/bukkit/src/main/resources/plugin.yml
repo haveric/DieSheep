@@ -1,0 +1,13 @@
+name: DieSheep
+main: haveric.dieSheep.DieSheep
+version: 1.3.0
+author: haveric
+website: https://dev.bukkit.org/projects/diesheep/
+dev-url: https://dev.bukkit.org/projects/diesheep/
+api-version: 1.14
+description: >
+             Kill any sheep when attempting to dye them
+commands:
+  diesheep:
+    description: Kill any sheep when attempting to dye them
+    usage:

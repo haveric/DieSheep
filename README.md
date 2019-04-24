@@ -4,7 +4,8 @@ DieSheep
 #### Changelog:
 
 #### Coming Soon
-* Updated Metrics to handle old getOnlinePlayers (provides backward support for old versions of CraftBukkit)
+* 1.14 Update
+* Remove Metrics
 
 #### Version 1.2 (8/11/2014)
 * Updated Metrics to work with updated getOnlinePlayers
