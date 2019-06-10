@@ -3,7 +3,7 @@ DieSheep
 
 #### Changelog:
 
-#### Coming Soon
+#### Version 1.3.0 (6/9/2019)
 * 1.14 Update
 * Remove Metrics
 
