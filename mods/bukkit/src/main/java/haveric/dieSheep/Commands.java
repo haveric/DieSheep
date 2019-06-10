@@ -50,9 +50,9 @@ public class Commands implements CommandExecutor {
                     dropTrueFalse =  " <true," + highlightColor + "false" + defaultColor + ">";
                 }
 
-                double shearExplosionPower = Math.round(Config.getShearExplosionPower() * 100) / 100;
-                double dieExplosionPower = Math.round(Config.getDieExplosionPower() * 100) / 100;
-                double dyeExplosionPower = Math.round(Config.getDyeExplosionPower() * 100) / 100;
+                double shearExplosionPower = Math.round(Config.getShearExplosionPower() * 100) / 100.0;
+                double dieExplosionPower = Math.round(Config.getDieExplosionPower() * 100) / 100.0;
+                double dyeExplosionPower = Math.round(Config.getDyeExplosionPower() * 100) / 100.0;
 
 
                 sender.sendMessage("/" + cmdMain + " " + cmdAddWorld +  " <world> - " + msgColor + "Enables DieSheep on world");

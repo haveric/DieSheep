@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
@@ -37,7 +35,7 @@ public class SheepInteract implements Listener {
 
                 String shearType = Config.getShearType();
                 if (shearType.equals(Config.TYPE_WOLF)) {
-                    spawnWolf(sheep.getLocation(), event.getPlayer());
+                    spawnWolf(sheep.getLocation());
                 } else if (shearType.equals(Config.TYPE_EXPLOSION)) {
                     spawnExplosion(sheep, Config.getShearExplosionPower());
                 }
@@ -98,10 +96,8 @@ public class SheepInteract implements Listener {
         }
     }
 
-    public void spawnWolf(Location loc, Player player) {
-        Wolf wolf = loc.getWorld().spawn(loc, Wolf.class);
-        wolf.setAngry(true);
-        wolf.damage(0, player);
+    public void spawnWolf(Location loc) {
+        loc.getWorld().spawn(loc, Wolf.class);
     }
 
     public void spawnExplosion(Sheep sheep, double amount) {

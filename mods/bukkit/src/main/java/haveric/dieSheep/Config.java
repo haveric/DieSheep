@@ -38,7 +38,7 @@ public class Config {
 
     /**
      * Initializes the config file
-     * @param ss The main class used to
+     * @param ds The main class used to
      */
     public static void init(DieSheep ds) {
         plugin = ds;
@@ -56,7 +56,7 @@ public class Config {
         worlds = (ArrayList<String>) config.get(cfgAllowedWorlds);
 
         if (worlds == null) {
-            worlds = new ArrayList<String>();
+            worlds = new ArrayList<>();
             worlds.add("testworld");
             worlds.add("testworld2");
             config.set(cfgAllowedWorlds, worlds);
@@ -155,7 +155,7 @@ public class Config {
     }
 
     public static void setShearType(String type) {
-        if (type.equals("wolf") || type.equals("none") || type.equals("explosion")) {
+        if (type.equals(TYPE_WOLF) || type.equals(TYPE_NONE) || type.equals(TYPE_EXPLOSION)) {
             config.set(cfgShearType, type);
             saveConfig();
         }
@@ -177,7 +177,7 @@ public class Config {
     }
 
     public static void setDieType(String type) {
-        if (type.equals("none") || type.equals("explosion")) {
+        if (type.equals(TYPE_NONE) || type.equals(TYPE_EXPLOSION)) {
             config.set(cfgDieType, type);
             saveConfig();
         }
@@ -199,7 +199,7 @@ public class Config {
     }
 
     public static void setDyeType(String type) {
-        if (type.equals("none") || type.equals("explosion")) {
+        if (type.equals(TYPE_NONE) || type.equals(TYPE_EXPLOSION)) {
             config.set(cfgDyeType, type);
             saveConfig();
         }
