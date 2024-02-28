@@ -12,18 +12,18 @@ public class Config {
     private static DieSheep plugin;
 
     private static ArrayList<String> worlds;
-    private static String cfgAllowedWorlds = "AllowedWorlds";
+    private static final String cfgAllowedWorlds = "AllowedWorlds";
 
     // Old explosion type used to convert older plugin versions
-    private static String cfgExplosionDamage = "ExplosionDamage";
-    private static String cfgDropWool = "DropWool";
+    private static final String cfgExplosionDamage = "ExplosionDamage";
+    private static final String cfgDropWool = "DropWool";
 
-    private static String cfgShearType = "ShearType";
-    private static String cfgShearExplosionPower = "ShearExplosionPower";
-    private static String cfgDieType = "DieType";
-    private static String cfgDieExplosionPower = "DieExplosionPower";
-    private static String cfgDyeType = "DyeType";
-    private static String cfgDyeExplosionPower = "DyeExplosionPower";
+    private static final String cfgShearType = "ShearType";
+    private static final String cfgShearExplosionPower = "ShearExplosionPower";
+    private static final String cfgDieType = "DieType";
+    private static final String cfgDieExplosionPower = "DieExplosionPower";
+    private static final String cfgDyeType = "DyeType";
+    private static final String cfgDyeExplosionPower = "DyeExplosionPower";
 
     private static final boolean DROP_WOOL_DEFAULT = true;
     private static final double DEFAULT_EXPLOSION_POWER = 1.2;
@@ -97,13 +97,7 @@ public class Config {
     }
 
     public static boolean isEnabled(String world) {
-        boolean enabled = false;
-
-        if (worlds.contains(world)) {
-            enabled = true;
-        }
-
-        return enabled;
+        return worlds.contains(world);
     }
 
     public static boolean addWorld(String world) {

@@ -11,12 +11,12 @@ public class Commands implements CommandExecutor {
 
     private static String cmdMain = "diesheep";
     private static String cmdHelp = "help";
-    private static String cmdAddWorld = "add";
-    private static String cmdRemoveWorld = "remove";
-    private static String cmdShearExplosion = "shear";
-    private static String cmdDieExplosion = "die";
-    private static String cmdDyeExplosion = "dye";
-    private static String cmdDrop = "drop";
+    private static final String cmdAddWorld = "add";
+    private static final String cmdRemoveWorld = "remove";
+    private static final String cmdShearExplosion = "shear";
+    private static final String cmdDieExplosion = "die";
+    private static final String cmdDyeExplosion = "dye";
+    private static final String cmdDrop = "drop";
 
     public Commands(DieSheep wd) {
         plugin = wd;
@@ -36,7 +36,7 @@ public class Commands implements CommandExecutor {
                 sender.sendMessage(title + "github.com/haveric/DieSheep - v" + plugin.getDescription().getVersion());
 
                 String worldString = Config.getWorlds();
-                if (worldString.equals("")) {
+                if (worldString.isEmpty()) {
                     worldString = errorColor + "none";
                 } else {
                     worldString = highlightColor + worldString;
